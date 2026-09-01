@@ -110,7 +110,7 @@ export const lcmsFrameStyles = css`
 
   .lcms-frame__header h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: var(--header-font-size);
     font-weight: 600;
   }
 
@@ -118,8 +118,7 @@ export const lcmsFrameStyles = css`
     background-color: rgba(255, 255, 255, 0.2);
     padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
+    font-size: var(--content-font-size);
   }
 
   .lcms-frame__close-btn {
@@ -154,6 +153,7 @@ export const lcmsFrameStyles = css`
 
   .lcms-frame__image-wrapper {
     margin-bottom: 15px;
+    margin-top: 15px;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -165,7 +165,31 @@ export const lcmsFrameStyles = css`
     object-fit: cover;
   }
 
-  .lcms-frame--small { max-width: 350px; }
-  .lcms-frame--medium { max-width: 550px; }
-  .lcms-frame--large { max-width: 800px; }
+  .lcms-frame--small { max-width: var(--small-width); }
+  .lcms-frame--medium { max-width: var(--medium-width); }
+  .lcms-frame--large { max-width: var(--large-width); }
+
+  @media (min-width: 320px) and (max-width: 600px) {
+    :host {
+      --small-width: 70%;
+      --medium-width: 80%;
+      --large-width: 90%;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 1068px) {
+    :host {
+      --small-width: 60%;
+      --medium-width: 70%;
+      --large-width: 80%;
+    }
+  }
+
+  @media (min-width: 1069px) {
+    :host {
+      --small-width: 20%;
+      --medium-width: 30%;
+      --large-width: 40%;
+    }
+  }
 `;
