@@ -8,7 +8,7 @@ export default class Frame extends LitElement {
     header: { type: String },
     type: { type: String },
     imgSrc: { type: String },
-    label: { type: String },
+    frameLabel: { type: String },
     variant: { type: String },
     size: { type: String },
     className: { type: String },
@@ -21,10 +21,10 @@ export default class Frame extends LitElement {
 
   constructor() {
     super();
-    this.header = 'Frame Header';
+    this.header = '';
     this.type = 'text';
     this.imgSrc = '';
-    this.label = 'LCMS Frame';
+    this.frameLabel = '';
     this.variant = 'primary';
     this.size = 'medium';
     this.className = '';
@@ -92,7 +92,6 @@ export default class Frame extends LitElement {
           <div class="lcms-frame__header">
             <div class="lcms-frame__header-title">
               <h3>${this.header}</h3>
-              ${this.label ? html`<span class="lcms-frame__label">${this.label}</span>` : ''}
             </div>
 
             <button 
@@ -105,6 +104,12 @@ export default class Frame extends LitElement {
           </div>
 
           <div class="lcms-frame__body">
+            <div class="lcms-frame__content">
+              <literal>
+                ${this.frameLabel ? html`<span class="lcms-frame__label">${this.frameLabel}</span>` : ''}
+              </literal>
+            </div>
+            
             ${this.type === 'image' && this.imgSrc
               ? html`
                   <div class="lcms-frame__image-wrapper">
@@ -113,9 +118,6 @@ export default class Frame extends LitElement {
                 `
               : ''}
 
-            <div class="lcms-frame__content">
-              <slot></slot>
-            </div>
           </div>
 
         </div>
